@@ -1,25 +1,10 @@
 #include "pebble_os.h"
 #include "pebble_app.h"
 #include "pebble_fonts.h"
+#include "wordify.h"
 
 #define UUID {0xC0,0x5E,0x85,0xD5,0x46,0x2E,0x4B,0xAA,0xAA,0xF8,0x40,0x9C,0x33,0xB0,0xDE,0x33}
-
-char* hours[] = {"twelve", "one", "two", "three", "four", "five", "six",
-	"seven", "eight", "nine", "ten", "eleven"};
-char* ones[] = {"oh", "one", "two", "three", "four", "five", "six", "seven",
-	"eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
-	"sixteen", "seventeen", "eighteen", "nineteen"};
-char* tens[] = {"o'clock", "ten", "twenty", "thirty", "forty", "fifty"};
-char* ord_ones[] = {"zeroth", "first", "second", "third", "fourth", "fifth",
-	"sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth",
-	"thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth",
-	"eighteenth", "nineteenth"};
-char* ord_tens[] = {"zeroth", "tenth", "twentieth", "thirtieth"};
-
-char* days[] = {"sunday", "monday", "tuesday", "wednesday", "thursday",
-	"friday", "saturday"};
-char* months[] = {"january", "february", "march", "april", "may", "june", "july",
-	"august", "september", "october", "november", "december"};
+#define BUFSIZE 16
 
 PBL_APP_INFO(UUID,
 		"Pixelated", "John Weachock",
@@ -29,40 +14,19 @@ PBL_APP_INFO(UUID,
 
 Window window;
 TextLayer hour_layer, min_layer, day_layer, month_layer, date_layer;
-char hour_txt[16], min_txt[16], day_txt[16], month_txt[16], date_txt[16];
-
-void min_to_str(int x, char* buffer, int size) {
-	if(x % 10 == 0) {
-		snprintf(buffer, size, "%s", tens[x / 10]);
-	} else if(x < 10) {
-		snprintf(buffer, size, "%s %s", ones[0], ones[x % 10]);
-	} else if(x < 20) {
-		snprintf(buffer, size, "%s", ones[x]);
-	} else {
-		snprintf(buffer, size, "%s %s", tens[x / 10], ones[x % 10]);
-	}
-}
-
-void date_to_str(int x, char* buffer, int size) {
-	if(x % 10 == 0) {
-		snprintf(buffer, size, "%s", ord_tens[x / 10]);
-	} else if(x < 20) {
-		snprintf(buffer, size, "%s", ord_ones[x]);
-	} else {
-		snprintf(buffer, size, "%s %s", ord_tens[x / 10], ord_ones[x % 10]);
-	}
-}
+char hour_txt[BUFSIZE], min_txt[BUFSIZE];
+char day_txt[BUFSIZE], month_txt[BUFSIZE], date_txt[BUFSIZE];
 
 void tick() {
 	PblTm current_time;
 
 	get_time(&current_time);
 
-	snprintf(hour_txt, 16, "%s", hours[current_time.tm_hour % 12]);
-	min_to_str(current_time.tm_min, min_txt, 16);
-	snprintf(day_txt, 16, "%s", days[current_time.tm_wday]);
-	snprintf(month_txt, 16, "%s", months[current_time.tm_mon]);
-	date_to_str(current_time.tm_mday, date_txt, 16);
+	hour_to_str(current_time.tm_hour, hour_txt, BUFSIZE);
+	min_to_str(current_time.tm_min, min_txt, BUFSIZE);
+	day_to_str(current_time.tm_wday, day_txt, BUFSIZE);
+	month_to_str(current_time.tm_mon, month_txt, BUFSIZE);
+	date_to_str(current_time.tm_mday, date_txt, BUFSIZE);
 
 	text_layer_set_text(&hour_layer, hour_txt);
 	text_layer_set_text(&min_layer, min_txt);
