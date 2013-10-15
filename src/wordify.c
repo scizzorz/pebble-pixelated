@@ -5,12 +5,12 @@
 char* ones[] = {"oh", "one", "two", "three", "four", "five", "six", "seven",
 	"eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
 	"sixteen", "seventeen", "eighteen", "nineteen"};
-char* tens[] = {"o'clock", "ten", "twenty", "thirty", "forty", "fifty"};
-char* ord_ones[] = {"zeroth", "first", "second", "third", "fourth", "fifth",
+char* tens[] = {"", "ten", "twenty", "thirty", "forty", "fifty"};
+char* ord_ones[] = {"", "first", "second", "third", "fourth", "fifth",
 	"sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth",
 	"thirteenth", "fourteenth", "fifteenth", "sixteenth", "seventeenth",
 	"eighteenth", "nineteenth"};
-char* ord_tens[] = {"zeroth", "tenth", "twentieth", "thirtieth"};
+char* ord_tens[] = {"", "tenth", "twentieth", "thirtieth"};
 
 char* days[] = {"sunday", "monday", "tuesday", "wednesday", "thursday",
 	"friday", "saturday"};
