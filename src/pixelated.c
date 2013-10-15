@@ -39,23 +39,23 @@ void init(AppContextRef ctx) {
 	window_init(&window, "Pixelated");
 	window_stack_push(&window, true);
 
-	text_layer_init(&hour_layer, GRect(0, 2, 144, 30));
+	text_layer_init(&hour_layer, GRect(0, 2, 144, 24));
 	text_layer_set_text_alignment(&hour_layer, GTextAlignmentCenter);
 	text_layer_set_font(&hour_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 
-	text_layer_init(&min_layer, GRect(0, 32, 144, 30));
+	text_layer_init(&min_layer, GRect(0, 26, 144, 24));
 	text_layer_set_text_alignment(&min_layer, GTextAlignmentCenter);
 	text_layer_set_font(&min_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 
-	text_layer_init(&day_layer, GRect(0, 64, 144, 30));
+	text_layer_init(&day_layer, GRect(0, 90, 144, 24));
 	text_layer_set_text_alignment(&day_layer, GTextAlignmentCenter);
 	text_layer_set_font(&day_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 
-	text_layer_init(&month_layer, GRect(0, 96, 144, 30));
+	text_layer_init(&month_layer, GRect(0, 116, 144, 24));
 	text_layer_set_text_alignment(&month_layer, GTextAlignmentCenter);
 	text_layer_set_font(&month_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 
-	text_layer_init(&date_layer, GRect(0, 128, 144, 30));
+	text_layer_init(&date_layer, GRect(0, 142, 144, 24));
 	text_layer_set_text_alignment(&date_layer, GTextAlignmentCenter);
 	text_layer_set_font(&date_layer, fonts_get_system_font(FONT_KEY_ROBOTO_CONDENSED_21));
 
