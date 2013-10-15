@@ -40,7 +40,7 @@ void date_to_str(int x, char* buffer, int size) {
 }
 
 void hour_to_str(int x, char* buffer, int size) {
-	snprintf(buffer, size, "%s", ones[x==12 ? 12 : (x % 12)]);
+	snprintf(buffer, size, "%s", ones[(x % 12)==0 ? 12 : (x % 12)]);
 }
 
 void day_to_str(int x, char* buffer, int size) {
