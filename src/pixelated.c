@@ -11,7 +11,7 @@ char* tens[] = {"twenty", "thirty", "forty", "fifty"};
 
 PBL_APP_INFO(UUID,
 	"Pixelated", "John Weachock",
-	1, 0, /* App version */
+	1, 0,
 	DEFAULT_MENU_ICON,
 	APP_INFO_WATCH_FACE);
 
@@ -20,7 +20,7 @@ TextLayer time_layer;
 
 void init(AppContextRef ctx) {
 	window_init(&window, "Pixelated");
-	window_stack_push(&window, true /* Animated */);
+	window_stack_push(&window, true);
 
 	text_layer_init(&time_layer, GRect(0, 65, 144, 30));
 	text_layer_set_text_alignment(&time_layer, GTextAlignmentCenter);
