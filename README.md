@@ -1,4 +1,3 @@
-pebble-pixelated
-================
+# Pixelated
 
 A Pebble watchface
