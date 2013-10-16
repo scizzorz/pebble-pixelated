@@ -36,37 +36,37 @@ void tick() {
 }
 
 void init(AppContextRef ctx) {
-	resource_init_current_app(&APP_RESOURCES);
 	window_init(&window, "Pixelated");
 	window_stack_push(&window, true);
 
-	GFont font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_STAN_16));
+	GFont large = fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD);
+	GFont small = fonts_get_system_font(FONT_KEY_GOTHIC_24);
 
-	text_layer_init(&hour_layer, GRect(0, 2, 144, 24));
+	text_layer_init(&hour_layer, GRect(0, 2, 144, 28));
 	text_layer_set_text_alignment(&hour_layer, GTextAlignmentCenter);
-	text_layer_set_font(&hour_layer, font);
+	text_layer_set_font(&hour_layer, large);
 
-	text_layer_init(&min_layer, GRect(0, 26, 144, 24));
+	text_layer_init(&min_layer, GRect(0, 30, 144, 34));
 	text_layer_set_text_alignment(&min_layer, GTextAlignmentCenter);
-	text_layer_set_font(&min_layer, font);
+	text_layer_set_font(&min_layer, large);
 
-	text_layer_init(&day_layer, GRect(0, 90, 144, 24));
+	text_layer_init(&day_layer, GRect(0, 92, 144, 28));
 	text_layer_set_text_alignment(&day_layer, GTextAlignmentCenter);
-	text_layer_set_font(&day_layer, font);
+	text_layer_set_font(&day_layer, small);
 
-	text_layer_init(&month_layer, GRect(0, 116, 144, 24));
+	text_layer_init(&month_layer, GRect(0, 116, 144, 28));
 	text_layer_set_text_alignment(&month_layer, GTextAlignmentCenter);
-	text_layer_set_font(&month_layer, font);
+	text_layer_set_font(&month_layer, small);
 
-	text_layer_init(&date_layer, GRect(0, 142, 144, 24));
+	text_layer_init(&date_layer, GRect(0, 140, 144, 28));
 	text_layer_set_text_alignment(&date_layer, GTextAlignmentCenter);
-	text_layer_set_font(&date_layer, font);
+	text_layer_set_font(&date_layer, small);
 
 	layer_add_child(&window.layer, &hour_layer.layer);
 	layer_add_child(&window.layer, &min_layer.layer);
-	layer_add_child(&window.layer, &day_layer.layer);
-	layer_add_child(&window.layer, &month_layer.layer);
 	layer_add_child(&window.layer, &date_layer.layer);
+	layer_add_child(&window.layer, &month_layer.layer);
+	layer_add_child(&window.layer, &day_layer.layer);
 
 	tick();
 }
