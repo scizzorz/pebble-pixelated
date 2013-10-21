@@ -35,7 +35,7 @@ void date_to_str(int x, char* buffer, int size) {
 	} else if(x < 20) {
 		snprintf(buffer, size, "%s", ord_ones[x]);
 	} else {
-		snprintf(buffer, size, "%s-%s", ord_tens[x / 10], ord_ones[x % 10]);
+		snprintf(buffer, size, "%s-%s", tens[x / 10], ord_ones[x % 10]);
 	}
 }
 
